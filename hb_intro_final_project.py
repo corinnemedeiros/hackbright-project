@@ -46,21 +46,25 @@ def main():
 def game():
 	while True:
 		import random
-		player_input = raw_input(random.choice(WORLD_DICT.keys()))
+		player_input = raw_input(random.choice(WORLD_DICT.keys())+ "\nCountry: ") 
+		correct = False
 		for key, value in WORLD_DICT.iteritems():
 			if value == player_input:
-				print "YES!"
-			else:
-				print "NOPE TRY AGAIN"
-		exit_menu_input = raw_input("E - Exit\nM - Main Menu")
+				correct = True
+		if correct:
+			print "Yay you're smart! Keep going!"
+		else:
+			print "Try again."
+		
+		exit_menu_input = raw_input("C - Continue\nE - Exit\nM - Main Menu")
+		if player_input == "C":
+			continue
 		if player_input == "M":
 			main()
 		elif player_input == "E":
 			break
 
 
-#mydict = {'george':16,'amber':19}
-#print mydict.keys()[mydict.values().index(16)] # Prints george
 
 #game()
 
