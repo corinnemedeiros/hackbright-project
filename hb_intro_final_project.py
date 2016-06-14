@@ -1,5 +1,5 @@
 #functions for final project
-
+import random
 #for each word that pops up, enter the corresponding country name.
 
 WORLD_DICT = {"Vegemite": "Australia", "Uluru": "Australia", "Dosa": "India", \
@@ -7,16 +7,33 @@ WORLD_DICT = {"Vegemite": "Australia", "Uluru": "Australia", "Dosa": "India", \
 "Petra": "Jordan", "Victoria Falls": "Zimbabwe", "Kiwi": "New Zealand", "Haggis": "Scotland", \
 "Giants Causeway": "Ireland", "Spatzle": "Germany"}
 
+
+WORLD_DICT_TEST = {"Australia": ["Vegemite", "Uluru / Ayers Rock", "Numbat"], "India": ["Dosa", "Kolam", "Saree / Sari"], \
+"Nicaragua": ["Nacatamales", "Granada"], "Peru": ["Ceviche", "Machu Picchu"], "Italy": \
+["Leaning Tower of Pisa", "Abbiocco", "Gattara - an elderly 'cat lady'"], "Jordan": ["Petra", "Hashemite"], "Zimbabwe": \
+["Victoria Falls", "Mount Nyangani"], "New Zealand": ["Kiwi", "Maroi"], "Scotland": ["Haggis", "'Nessie'"], \
+"Ireland": ["Giant's Causeway", "Guinness", "Emerald Isle"], "Germany": ["Spatzle", "Berlin"], "Japan": ["Okonomiyaki", \
+"Ikebana"], "Portugal": ["Fado - a folk music genre", "Lisbon", "Bertrand Bookstore - the oldest bookstore in the world"], \
+"Singapore": ["Merlion", "chicken rice"], "Greece": ["The Parthenon", "Aristotle"], "Russia": ["Kremlin", "Tolstoy"], \
+"France": ["Macaroons", "Champagne"], "Spain": ["La Tomatina Festival", "Seville", "Canary Islands"], "Canada": ["Della Falls", \
+"SNOLAB - deepest physics lab on earth", "Ryan Gosling", "Maple Syrup"], "USA": ["Zion National Park", "Golden Gate Bridge", \
+"Statue of Liberty"], "Thailand": ["Ko Tapu - James Bond Island", "Bangkok", "Tom Yum Soup"]}
+
+
+	
+
+
+
 def main():
 	while True:
 		print "\nWelcome to the worldly word association game!\n"
 		intro_choice = int(raw_input("How would you rate your worldly-ness?? Choose a number:\n\
-		1 - I have been to all places of this earth I am le tired.\n\
-		2 - I have been to the moon!\n\
-		3 - I have never been outside my house I am le sad.\n\
-		4 - I live under a rock, I am le flat.\n\
-		5 - There's a world out there??!!?\n\
-		6 - Whatever. Let's do this!!!!!!\n\
+	1 - I have been to all places of this earth I am le tired.\n\
+	2 - I have been to the moon!\n\
+	3 - I have never been outside my house I am le sad.\n\
+	4 - I live under a rock, I am le flat.\n\
+	5 - There's a world out there??!!?\n\
+	6 - Whatever. Let's do this!!!!!!\n\
 		\nType 0 to Exit\n"))
 		if intro_choice == 1:
 			print "Stop whining. Let's see what you've got!"
@@ -43,34 +60,34 @@ def main():
 	print "Goodbye thanks for playing!"
 
 
+
 def game():
+	
+	retry = False
+
 	while True:
-		import random
-		player_input = raw_input(random.choice(WORLD_DICT.keys())+ "\nCountry: ") 
-		correct = False
-		for key, value in WORLD_DICT.iteritems():
-			if value == player_input:
-				correct = True
-		if correct:
+		
+		if retry == False:
+			random_country = random.choice(WORLD_DICT_TEST.keys())
+			values = WORLD_DICT_TEST.get(random_country)
+			random_value = random.choice(values)
+
+		player_input = raw_input(random_value + "\nWhat country do I belong to?\nAnswer: ")
+		if player_input == random_country:
 			print "Yay you're smart! Keep going!"
+			retry = False
 		else:
 			print "Try again."
+			retry = True
 		
-		exit_menu_input = raw_input("C - Continue\nE - Exit\nM - Main Menu")
-		if player_input == "C":
+		exit_menu_input = raw_input("C - Continue\nE - Exit\nM - Main Menu\n")
+		if exit_menu_input == "C":
 			continue
-		if player_input == "M":
+		elif exit_menu_input == "M":
 			main()
-		elif player_input == "E":
+		elif exit_menu_input == "E":
 			break
 
-
-
-#game()
-
-
-# while raw_input() == "E":
-# 	break
 
 
 
