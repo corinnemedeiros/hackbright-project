@@ -1,12 +1,9 @@
+"""Worldly Word Association Game"""
+
 #functions for final project
 import random
-#for each word that pops up, enter the corresponding country name.
 
-WORLD_DICT = {"Vegemite": "Australia", "Uluru": "Australia", "Dosa": "India", \
-"Kolam": "India", "Nacatamales": "Nicaragua", "Ceviche": "Peru", "Leaning Tower of Pisa": "Italy", \
-"Petra": "Jordan", "Victoria Falls": "Zimbabwe", "Kiwi": "New Zealand", "Haggis": "Scotland", \
-"Giants Causeway": "Ireland", "Spatzle": "Germany"}
-
+#directions: for each word that pops up, enter the corresponding country name.
 
 WORLD_DICT_TEST = {"Australia": ["Vegemite", "Uluru / Ayers Rock", "Numbat"], "India": ["Dosa", "Kolam", "Saree / Sari"], \
 "Nicaragua": ["Nacatamales", "Granada"], "Peru": ["Ceviche", "Machu Picchu"], "Italy": \
@@ -20,12 +17,11 @@ WORLD_DICT_TEST = {"Australia": ["Vegemite", "Uluru / Ayers Rock", "Numbat"], "I
 "Statue of Liberty"], "Thailand": ["Ko Tapu - James Bond Island", "Bangkok", "Tom Yum Soup"]}
 
 
-	
-
-
 
 def main():
+	#main menu, questions correspond to level of difficulty
 	while True:
+		
 		print "\nWelcome to the worldly word association game!\n"
 		intro_choice = int(raw_input("How would you rate your worldly-ness?? Choose a number:\n\
 	1 - I have been to all places of this earth I am le tired.\n\
@@ -35,6 +31,7 @@ def main():
 	5 - There's a world out there??!!?\n\
 	6 - Whatever. Let's do this!!!!!!\n\
 		\nType 0 to Exit\n"))
+		
 		if intro_choice == 1:
 			print "Stop whining. Let's see what you've got!"
 			game()
@@ -62,18 +59,23 @@ def main():
 
 
 def game():
-	
+	#main game function
 	retry = False
 
 	while True:
-		
+	#loop to keep choosing random words from dictionary	
 		if retry == False:
 			random_country = random.choice(WORLD_DICT_TEST.keys())
+			#choose a random key from dictionary
 			values = WORLD_DICT_TEST.get(random_country)
+			#get the values for that key
 			random_value = random.choice(values)
+			#choose a random value from that key
 
 		player_input = raw_input(random_value + "\nWhat country do I belong to?\nAnswer: ")
+		
 		if player_input == random_country:
+		#check if answer is correct	
 			print "Yay you're smart! Keep going!"
 			retry = False
 		else:
@@ -81,14 +83,13 @@ def game():
 			retry = True
 		
 		exit_menu_input = raw_input("C - Continue\nE - Exit\nM - Main Menu\n")
+		#options for user to continue, return to main menu, or exit
 		if exit_menu_input == "C":
 			continue
 		elif exit_menu_input == "M":
 			main()
 		elif exit_menu_input == "E":
 			break
-
-
 
 
 
