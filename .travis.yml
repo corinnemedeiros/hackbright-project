@@ -5,4 +5,4 @@ python:
 script: python hb_intro_final_project_testing.py
 branches:
   only:
-- master
+    - master
