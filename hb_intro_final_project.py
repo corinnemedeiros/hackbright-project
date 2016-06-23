@@ -15,14 +15,20 @@ from Tkinter import *
 # for GUI
 
 
-WORLD_DICT_EASY = {"Australia": ["Vegemite", "Crocodile Dundee", "The Great Barrier Reef"], "India": ["Bollywood", "Masala Chai", \
-"Taj Mahal"], "Peru": ["Lima", "Machu Picchu"], "Italy": ["Leaning Tower of Pisa", "Limoncello", "Gelato"], "New Zealand": ["Kiwi (bird)", \
-"Auckland", "Hobbiton"], "Scotland": ["Kilts", "Loch Ness Monster"], "China": ["Shanghai", "The Great Wall"],  \
-"Ireland": ["Guinness", "The Emerald Isle", "Colin Farrell"], "Germany": ["Karl Marx", "Berlin"], "Japan": ["Tokyo", "Samurai"], \
-"Singapore": ["The Merlion", "'The Garden City' - the world's only island city state"], "Greece": ["Zeus", "Aphrodite"], \
-"Russia": ["The Kremlin", "Leo Tolstoy"], "UK": ["The Beatles", "London"], "Egypt": ["Cairo", "The Pyramids"], \
-"France": ["The Eiffel Tower", "Champagne"], "Spain": ["Barcelona", "Madrid"], "Canada": ["Ryan Gosling", "Maple Syrup"], \
-"USA": ["Zion National Park", "Golden Gate Bridge", "Statue of Liberty"], "Thailand": ["Bangkok", "Pad Thai"]}
+WORLD_DICT_EASY = {"Australia": ["Vegemite - delicious yeast extract", "Crocodile Dundee", "The Great Barrier Reef"], \
+"India": ["Bollywood - Hollywood but not", "Masala Chai - what dreams are made of, also you drink it", "The Taj Mahal"], \
+"Peru": ["Lima - a capital city", "Machu Picchu - there are llamas"], "Italy": ["The Leaning Tower of Pisa", "Limoncello - a lemon liqueur", \
+"Gelato - a creamy dessert"], "New Zealand": ["Kiwi - a flightless bird", "Auckland - home to the iconic Sky Tower", \
+"Hobbiton - a magical movie set"], "Scotland": ["Kilt - a traditional garment", "The Loch Ness Monster - it's real!"], \
+"China": ["Shanghai - a global financial hub", "The Great Wall - it's pretty great, over 13,000 miles long"],  \
+"Ireland": ["Guinness - you drink it", "The 'Emerald Isle' - a ridiculously green place", "Colin Farrell"], \
+"Germany": ["Karl Marx - a philosopher, economist, sociologist, and more things", "Berlin - a capital city"], \
+"Japan": ["Tokyo", "Samurai - noble warriors"], "Greece": ["Zeus - God of the Sky", "Aphrodite - Goddess of Love"], \
+"Russia": ["The Kremlin - means 'fortress inside a city'\n(or a place that Tom Cruise and Simon Pegg broke into)", "Leo Tolstoy - a writer"], \
+"UK": ["The Beatles - they're a band", "London - home of 'Big Ben'"], "Egypt": ["Cairo - there are mummies", "The Pyramids"], \
+"France": ["Macaroons", "Champagne - a region, also you drink it"], "Spain": ["Barcelona - an artsy city", "Tapas - sophisticated appetizers"], \
+"Canada": ["Ryan Gosling", "Maple Syrup"], "USA": ["Zion National Park", "The Golden Gate Bridge", "Donald Trump"], \
+"Thailand": ["Bangkok", "Pad Thai - yum"]}
 
 
 WORLD_DICT_MEDIUM = {"Australia": ["Vegemite", "Tim Tams", "Uluru / Ayers Rock", "Anzac Day"], "India": ["Dosa", "Kolam"], \
@@ -32,8 +38,9 @@ WORLD_DICT_MEDIUM = {"Australia": ["Vegemite", "Tim Tams", "Uluru / Ayers Rock",
 "Scotland": ["Haggis", "Isle of Sky", "'Nessie'"], "Ireland": ["The Giant's Causeway", "The Blarney Stone"], \
 "Germany": ["Spaetzle - egg noodle dumpling", "Berlin"], "Israel": ["Tel Aviv", "Jerusalem"], "Japan": ["Okonomiyaki - a savory pancake", \
 "Ikebana - an art of flower arrangement"], "Portugal": ["Fado - a folk music genre", "Bertrand Bookstore - the oldest bookstore in the world"], \
-"Singapore": ["Merlion", "Sentosa Island Resort"], "Greece": ["The Parthenon", "Aristotle"], "Russia": ["Vladimir Putin", "Leo Tolstoy"], \
-"France": ["Macaroons", "Champagne"], "Spain": ["La Tomatina Festival", "Seville", "Canary Islands"], "Canada": \
+"Singapore": ["The Merlion - half lion, half fish", "'The Garden City' - the world's only island city state country"], "Greece": \
+["The Parthenon", "Aristotle"], "Russia": ["Vladimir Putin", "Leo Tolstoy"], \
+"France": ["Macaroons", "Champagne"], "Spain": ["La Tomatina Festival - it's a big food fight", "Seville", "Canary Islands"], "Canada": \
 ["SNOLAB - deepest physics lab on earth", "Ryan Gosling", "Maple Syrup"], "USA": ["Zion National Park", "Golden Gate Bridge", \
 "Statue of Liberty"], "Thailand": ["Ko Tapu - James Bond Island", "Tom Yum Soup"]}
 
@@ -44,7 +51,7 @@ WORLD_DICT_DIFFICULT = {"Australia": ["Quokka - a small rodent found on Rottnest
 "Hashemite"], "Zimbabwe": ["Victoria Falls", "Mount Nyangani"], "New Zealand": ["Milford Sound", "Maori people"], \
 "Scotland": ["Haggis", "Isle of Sky", "'Nessie'"], "Ireland": ["Giant's Causeway", "Galway", "Temple Bar"], "Germany": ["Spatzle", \
 "Berlin"], "Japan": ["Okonomiyaki", "Ikebana"], "Portugal": ["Belem Tower", "Bertrand Bookstore - the oldest bookstore in the world"], \
-"Singapore": ["Merlion", "Chicken Rice"], "Greece": ["The Parthenon", "Aristotle"], \
+"Singapore": ["Sentosa Island Resort", "Changi Airport - there's a waterfall inside"], "Greece": ["The Parthenon", "Aristotle"], \
 "France": ["Coco Chanel", "Champs-Elysees"], "Spain": ["Pan's Labyrinth", "Seville", "Canary Islands"], "Canada": ["Della Falls", \
 "SNOLAB - deepest physics lab on earth"], "USA": ["Zion National Park", "Golden Gate Bridge", \
 "Craters of the Moon - National Monument and Preserve", "Statue of Liberty", "Space Needle"], "Thailand": ["Ko Tapu - James Bond Island", \
@@ -72,7 +79,7 @@ def main():
 		
 		print "\n--- Welcome to The Worldly Word Association Game! ---\n"
 		
-		intro_choice = int(raw_input("How would you rate your worldly-ness??\n> Choose a number:\n\
+		intro_choice = int(raw_input("How would you rate your worldly-ness??\n\n> Choose a number:\n\n\
   1 - I have been to all places of this earth and I am le tired.\n\
   2 - I have been to the moon!\n\
   3 - I have never been outside my house and I am le sad.\n\
@@ -119,8 +126,8 @@ def game(dictionary, level):
 				random_results = get_random_value(dictionary)
 
 		player_input = (raw_input("\n1 - Main Menu\n0 - Exit\n\nQUESTION:\
-			\n-----------------------------\nWhat country do I belong to?\n--> "\
-			 + random_results[0] + "\n-----------------------------\nANSWER: ")).lower()
+			\n----------------------------------------------------------\nWhat country do I belong to?\n--> "\
+			 + random_results[0] + "\n----------------------------------------------------------\nANSWER: ")).lower()
 
 		if player_input == "1" or player_input == "0":
 			exit_menu(player_input)
@@ -198,10 +205,5 @@ if __name__ == '__main__':
 	main()
 
 
-# accounting for wrong spelling - suggestions? second chances?
-# scoring
-# classes
-# putting dictionaries on a separate python file and importing
-# testing files
-# GUI at end
+
 
